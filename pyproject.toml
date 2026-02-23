@@ -1,2 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chainsaw"
+version = "1.0.0"
+description = "Protein domain segmentation with fully convolutional neural networks"
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+authors = [{ name = "Jude Wells" }]
+dependencies = [
+    "numpy>=1.24,<2.0",
+    "pandas>=2.0,<3.0",
+    "torch>=2.0,<3.0",
+    "matplotlib>=3.7,<4.0",
+    "requests>=2.31,<3.0",
+    "biopython>=1.81,<2.0",
+    "pydantic>=1.10,<2.0",    # v2 removes @validator used in src/models/results.py
+    "click>=8.1,<9.0",
+    "scipy>=1.10,<2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.3",
+    "ruff>=0.0.269",
+]
+
+[project.scripts]
+chainsaw = "get_predictions:main_cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+include = ["get_predictions.py"]
+
 [tool.ruff]
 line-length = 120
