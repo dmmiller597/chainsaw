@@ -336,6 +336,10 @@ def parse_args():
     return args
 
 
-if __name__ == "__main__":
+def main_cli():
+    """Entry point for the 'chainsaw' console script."""
     setup_logging()
     main(parse_args())
+
+if __name__ == "__main__":
+    main_cli()
