@@ -62,7 +62,7 @@ compile_stride() {
     # Compile stride
     echo "Compiling stride..."
     cd "$STRIDE_DIR" || return 1
-    make || return 1
+    make CC='gcc -O2 -std=gnu17' || return 1
 
     # Change permissions
     echo "Changing stride permissions to executable..."
@@ -129,7 +129,7 @@ else
     echo "Please compile stride manually by following these steps:"
     echo "1. Navigate to the stride directory: cd $STRIDE_DIR"
     echo "2. Decompress the source: tar -zxf stride.tgz"
-    echo "3. Compile the source: make"
+    echo "3. Compile the source: make CC='gcc -O2 -std=gnu17'"
     echo "4. Make the binary executable: chmod +x stride"
     echo "5. Test the binary: ./stride --help"
 fi

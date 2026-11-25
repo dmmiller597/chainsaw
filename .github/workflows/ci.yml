@@ -39,7 +39,7 @@ jobs:
         run: |
           cd stride
           tar -zxvf stride.tgz
-          make
+          make CC='gcc -O2 -std=gnu17'
       - name: Test with pytest
         run: |
           pytest
